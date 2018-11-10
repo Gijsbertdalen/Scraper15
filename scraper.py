@@ -16,8 +16,8 @@ def scrape_table(root):
         record = {}
         table_cells = row.cssselect("TD")
         if table_cells: 
-            record['Racecourse'] = table_cells[0].text_-content()
-            record['Address and Phone Number'] = table_cells[1].text_-content()
+            record['Racecourse'] = table_cells[0].text
+            record['Address and Phone Number'] = table_cells[1].text
             # Print out the data we've gathered
             print record, '------------'
             # Finally, save the record to the datastore - 'Hospital' is our unique key
