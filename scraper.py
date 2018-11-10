@@ -10,11 +10,11 @@ import lxml.html
 
 # scrape_table function: gets passed an individual page to scrape
 def scrape_table(root):
-    rows = root.cssselect("p.ex1 tr")  # selects all <tr> blocks within <table class="Trolley table">
+    rows = root.cssselect("p.ex1 TR")  # selects all <tr> blocks within <table class="Trolley table">
     for row in rows:
         # Set up our data record - we'll need it later
         record = {}
-        table_cells = row.cssselect("td")
+        table_cells = row.cssselect("TD")
         if table_cells: 
             record['Racecourse'] = table_cells[0].text_-content()
             record['Address and Phone Number'] = table_cells[1].text_-content()
