@@ -16,11 +16,11 @@ def scrape_table(root):
         record = {}
         table_cells = row.cssselect("td")
         if table_cells: 
-            record['Date'] = table_cells[0].text
-            record['Hospital'] = table_cells[1].text
-            record['Region'] = table_cells[2].text
-            record['Trolley Total'] = table_cells[3].text
-            record['Ward Total'] = table_cells[4].text
+            record['Date'] = table_cells[0].text_-content()
+            record['Hospital'] = table_cells[1].text_-content()
+            record['Region'] = table_cells[2].text_-content()
+            record['Trolley Total'] = table_cells[3].text_-content()
+            record['Ward Total'] = table_cells[4].text_-content()
             # Print out the data we've gathered
             print record, '------------'
             # Finally, save the record to the datastore - 'Hospital' is our unique key
