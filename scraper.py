@@ -10,21 +10,18 @@ import lxml.html
 
 # scrape_table function: gets passed an individual page to scrape
 def scrape_table(root):
-    rows = root.cssselect("table.Trolley.table tr")  # selects all <tr> blocks within <table class="Trolley table">
+    rows = root.cssselect("p.ex1 tr")  # selects all <tr> blocks within <table class="Trolley table">
     for row in rows:
         # Set up our data record - we'll need it later
         record = {}
         table_cells = row.cssselect("td")
         if table_cells: 
-            record['Date'] = table_cells[0].text_-content()
-            record['Hospital'] = table_cells[1].text_-content()
-            record['Region'] = table_cells[2].text_-content()
-            record['Trolley Total'] = table_cells[3].text_-content()
-            record['Ward Total'] = table_cells[4].text_-content()
+            record['Racecourse'] = table_cells[0].text_-content()
+            record['Address and Phone Number'] = table_cells[1].text_-content()
             # Print out the data we've gathered
             print record, '------------'
             # Finally, save the record to the datastore - 'Hospital' is our unique key
-            scraperwiki.sqlite.save(["Hospital"], record)
+            scraperwiki.sqlite.save(["Racecourse"], record)
         
 # scrape_and_look_for_next_link function: calls the scrape_table
 # function, then hunts for a 'next' link: if one is found, calls itself again
@@ -44,5 +41,5 @@ def scrape_and_look_for_next_link(url):
 # START HERE: define your starting URL - then call a function to scrape it
 # ---------------------------------------------------------------------------
 
-starting_url = 'http://inmo.ie/6022'
+starting_url = 'www.ukjockey.com/racecourses.html'
 scrape_and_look_for_next_link(starting_url)
